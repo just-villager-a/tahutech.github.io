@@ -32,6 +32,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--amber); outline
 .nav-cta { padding: .45rem .75rem; border: 1px solid var(--ink); color: var(--ink) !important; }
 .menu-toggle { display: none; border: 1px solid var(--line); background: transparent; padding: .4rem .65rem; font: .7rem var(--mono); }
 .hero { padding-block: clamp(4.5rem, 8vw, 7rem) clamp(4.5rem, 8vw, 7rem); border-bottom: 1px solid var(--line); }
+@keyframes rise-in { from { opacity: 0; transform: translateY(12px); } }
+.hero > * { animation: rise-in .5s ease-out both; }
+.hero > :nth-child(2) { animation-delay: .06s; }
+.hero > :nth-child(3) { animation-delay: .12s; }
+.hero > :nth-child(4) { animation-delay: .18s; }
+.hero > :nth-child(5) { animation-delay: .24s; }
 .availability, .section-index, .mono { color: var(--amber); font: .65rem/1.4 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
 .availability { display: inline-flex; gap: .45rem; align-items: center; margin-bottom: 2rem; padding: .35rem .65rem; border: 1px solid #e6c49c; background: var(--amber-soft); }
 .availability span { font-size: .55rem; }
@@ -47,7 +53,16 @@ h1 { max-width: 800px; margin-bottom: .35rem; font-size: clamp(2rem, 4.5vw, 4rem
 .button { display: inline-flex; align-items: center; gap: .6rem; padding: .68rem 1rem; border: 1px solid var(--line); text-decoration: none; font: .7rem var(--mono); }
 .button-dark { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .text-link { padding: .5rem; font: .7rem var(--mono); text-decoration: none; }
+@media (hover: hover) {
+  .button, .text-link, .skill-card, .project-card, .contact-link { transition: transform .2s ease, border-color .2s ease; }
+  .button:hover, .text-link:hover, .skill-card:hover, .project-card:hover { transform: translateY(-3px); }
+  .contact-link:hover { transform: translateX(6px); }
+}
 .section { padding-block: clamp(4.5rem, 9vw, 7.5rem); border-bottom: 1px solid var(--line); }
+@media (prefers-reduced-motion: no-preference) {
+  main > .section.is-visible, main > .origin.is-visible { animation: rise-in .45s ease-out both; }
+}
+
 .section-heading { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 3rem; }
 .section-heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); }
 .section-intro { max-width: 650px; margin: -1rem 0 2.5rem 33.3%; color: var(--muted); }

@@ -76,6 +76,21 @@ import { education, experiences, projects, profile, skillGroups } from '../data/
         </div>
       </section>
     </main>
+    
+    <script is:inline>
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('main > .section, main > .origin').forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    </script>
     <Footer />
   </div>
 </BaseLayout>
