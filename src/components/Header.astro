@@ -1,0 +1,37 @@
+---
+const links = [
+  ['About', '#about'],
+  ['Experience', '#experience'],
+  ['Skills', '#skills'],
+  ['Projects', '#projects'],
+  ['Contact', '#contact']
+];
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="wordmark" href="#top" aria-label="TahuTech home">
+      <span>TahuTech</span>
+      <small>by Ade Widyatama Dian Boernama</small>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="sr-only">Toggle navigation</span>
+      <span aria-hidden="true">Menu</span>
+    </button>
+    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+      {links.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </div>
+</header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = document.querySelector<HTMLElement>('#primary-navigation');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    navigation?.toggleAttribute('data-open', !open);
+  });
+  navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    toggle?.setAttribute('aria-expanded', 'false');
+    navigation.removeAttribute('data-open');
+  }));
+</script>

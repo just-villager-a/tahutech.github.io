@@ -1,0 +1,20 @@
+---
+interface Props {
+  index: string; title: string; eyebrow: string; description: string; details: string;
+  technologies: string[];
+}
+const { index, title, eyebrow, description, details, technologies } = Astro.props;
+---
+<article class="project-card">
+  <div class="project-visual" aria-hidden="true"><span>{index}</span></div>
+  <div class="project-content">
+    <p class="section-index">Project {index}</p>
+    <h3>{title}</h3>
+    <p class="project-eyebrow">{eyebrow}</p>
+    <p>{description}</p>
+    <p>{details}</p>
+    <div class="tags" aria-label="Technologies used">
+      {technologies.map((technology) => <span>{technology}</span>)}
+    </div>
+  </div>
+</article>

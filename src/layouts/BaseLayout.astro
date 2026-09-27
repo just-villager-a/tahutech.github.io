@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Ade Widyatama Dian Boernama — .NET Backend Software Engineer',
+  description = 'TahuTech is the portfolio of Ade Widyatama Dian Boernama, a .NET and backend software engineer in Jakarta.'
+} = Astro.props;
+const canonical = 'https://tahutech.example/';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf9f7" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${canonical}og-image.svg`} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      name: title,
+      url: canonical,
+      mainEntity: {
+        '@type': 'Person',
+        name: 'Ade Widyatama Dian Boernama',
+        jobTitle: '.NET / Backend Software Engineer',
+        url: canonical,
+        sameAs: ['https://linkedin.com/in/ade-widyatama-db', 'https://github.com/just-villager-a']
+      }
+    })} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,13 @@
+---
+import { profile } from '../data/portfolio';
+---
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <p>© {new Date().getFullYear()} {profile.name}</p>
+    <div class="footer-links">
+      <a href={profile.linkedin} rel="me">LinkedIn</a>
+      <a href={profile.github} rel="me">GitHub</a>
+      <a href={`mailto:${profile.email}`}>Email</a>
+    </div>
+  </div>
+</footer>
